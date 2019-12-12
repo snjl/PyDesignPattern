@@ -136,8 +136,7 @@ class SortPerson:
 #=======================================================================================================================
 
 def testTheDinner():
-    sharedBicycle = SharedBicycle()
-    joe = Classmate("Joe", sharedBicycle)
+    joe = Classmate("Joe", SharedBicycle())
     joe.attendTheDinner()
     helen = Classmate("Helen", Subway())
     helen.attendTheDinner()

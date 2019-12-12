@@ -118,5 +118,6 @@ def testTemplate():
     templateB.templateMethold()
 
 
-testReader()
+# testReader()
 # testTemplate()
+

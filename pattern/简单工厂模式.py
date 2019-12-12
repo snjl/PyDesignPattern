@@ -21,7 +21,7 @@ class Coffee(metaclass=ABCMeta):
         pass
 
 
-class LatteCaffe(Coffee):
+class LatteCoffee(Coffee):
     """拿铁咖啡"""
 
     def __init__(self, name):
@@ -46,7 +46,7 @@ class Coffeemaker:
     def makeCoffee(coffeeBean):
         "通过staticmethod装饰器修饰来定义一个静态方法"
         if(coffeeBean == "拿铁咖啡豆"):
-            coffee = LatteCaffe("拿铁咖啡")
+            coffee = LatteCoffee("拿铁咖啡")
         elif(coffeeBean == "摩卡咖啡豆"):
             coffee = MochaCoffee("摩卡咖啡")
         else:
@@ -141,6 +141,8 @@ class PenFactory:
         # 否则直接返回字典中的对象
         return self.__pens[penType]
 
+    def get_pens(self):
+        return self.__pens
 
 # 基于框架的实现
 #==============================
@@ -165,7 +167,7 @@ def testPenFactory():
     print("创建了 %s，对象id：%s， 类型：%s" % (rectPen2.getName(), id(rectPen2), rectPen2.getType()) )
     ellipsePen = factory.createPen(PenType.PenTypeEllipse)
     print("创建了 %s，对象id：%s， 类型：%s" % (ellipsePen.getName(), id(ellipsePen), ellipsePen.getType()) )
-
+    print(factory.get_pens())
 
 # testCoffeeMaker()
 testPenFactory()

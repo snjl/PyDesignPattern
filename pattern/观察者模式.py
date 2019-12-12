@@ -82,6 +82,7 @@ class Observable:
             o.update(self, object)
 
 
+
 class WaterHeater(Observable):
     """热水器：战胜寒冬的有利武器"""
 
@@ -142,12 +143,14 @@ class Account(Observable):
         region = ipRegions.get(ip)
         return "" if region is None else region
 
+    def getRegion(self):
+        return self.__latestIp
 
     def __isLongDistance(self, name, region):
         # 计算本次登录与最近几次登录的地区差距。
         # 这里只是简单地用字符串匹配来模拟，真实的项目中应该调用地理信息相关的服务
         latestRegion = self.__latestRegion.get(name)
-        return latestRegion is not None and latestRegion != region;
+        return latestRegion is not None and latestRegion != region
 
 
 class SmsSender(Observer):
@@ -157,7 +160,8 @@ class SmsSender(Observer):
         print("[短信发送] " + object["name"] + "您好！检测到您的账户可能登录异常。最近一次登录信息：\n"
               + "登录地区：" + object["region"] + "  登录ip：" + object["ip"] + "  登录时间："
               + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(object["time"])))
-
+        print("------从引用对象中获取------")
+        print(observable.getRegion())
 
 class MailSender(Observer):
     """邮件发送器"""
